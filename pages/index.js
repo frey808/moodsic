@@ -5,6 +5,7 @@ import styles from "./index.module.css";
 export default function Home() {
   const [songInput, setSongInput] = useState("");
   const [result, setResult] = useState();
+  var songFilePath = "";
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -22,10 +23,9 @@ export default function Home() {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
 
-      setResult(data.result);
+      setResult((data.result + ".mp3").trim());
       setSongInput("");
     } catch(error) {
-      // Consider implementing your own error handling logic here
       console.error(error);
       alert(error.message);
     }
@@ -38,6 +38,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <img src="/mood.png" className={styles.icon} />
         <h3>Moodsic</h3>
         <form onSubmit={onSubmit}>
           <input
@@ -50,9 +51,9 @@ export default function Home() {
           <input type="submit" value="Generate Songs" />
         </form>
         <div className={styles.result}>{result}</div>
-        {console.log(result)}
+        {console.log("/songs/" + result)}
         <audio controls>
-          <source src="/songs/Happy.mp3" type="audio/mpeg"></source>
+          <source src={"/songs/" + result} type="audio/mpeg"></source>
           Your browser does not support this audio
         </audio>
       </main>
