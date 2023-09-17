@@ -33,7 +33,6 @@ export default async function (req, res) {
     });
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch(error) {
-    // Consider adjusting the error handling logic for your use case
     if (error.response) {
       console.error(error.response.status, error.response.data);
       res.status(error.response.status).json(error.response.data);
@@ -49,6 +48,6 @@ export default async function (req, res) {
 }
 
 function generatePrompt(song) {
-  const songList = 'Happy, Good Vibrations, Yo ho ho, Never Gonna Give You Up, Hello, Broken'
-  return `select 1 song from these options: ${songList} that reminds you of ${song}`;x
+  const songList = '[Good Vibrations, Happy, Here Comes The Sun, I Can See Clearly Now, What A Wonderful World]'
+  return `select 1 song from these options: ${songList} that reminds you of ${song}. Only respond with the song name and no extra characters`;
 }
