@@ -51,6 +51,10 @@ export default function Home() {
         </form>
         <div className={styles.result}>{result}</div>
         {console.log(result)}
+        <audio controls>
+          <source src="/songs/Happy.mp3" type="audio/mpeg"></source>
+          Your browser does not support this audio
+        </audio>
       </main>
     </div>
   );

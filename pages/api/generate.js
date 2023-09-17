@@ -49,14 +49,6 @@ export default async function (req, res) {
 }
 
 function generatePrompt(song) {
-  const superSong = song[0].toUpperCase() + song.slice(1).toLowerCase();
-  console.log("helo")
-  return `what are 10 songs that remind you of ${song}. respond in this format: 
-    {
-      "song-1":{
-        "song-name": "put song name here",
-        "song-artist": "put song artist here"
-      }
-    }
-  `;
+  const songList = 'Happy, Good Vibrations, Yo ho ho, Never Gonna Give You Up, Hello, Broken'
+  return `select 1 song from these options: ${songList} that reminds you of ${song} in json format like so: {"1": "insert song name here"}`;
 }
