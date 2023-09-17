@@ -34,18 +34,16 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>OpenAI Quickstart</title>
-        <link rel="icon" href="/mood.png" />
+        <title>Moodsic</title>
       </Head>
 
       <main className={styles.main}>
-        <img src="/mood.png" className={styles.icon} />
         <h3>Moodsic</h3>
         <form onSubmit={onSubmit}>
           <input
             type="text"
             name="song"
-            placeholder="What mood are you in?"
+            placeholder="What are you working on?"
             value={songInput}
             onChange={(e) => setSongInput(e.target.value)}
           />

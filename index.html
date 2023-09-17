@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Moodsic</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./images/mood.png">
+  </head>
+  <body>
+    <main>
+        <img src="./images/mood.png"/>
+        <h3>Moodsic</h3>
+        <form onsubmit="query()">
+            <input type="text" id="songInput" placeholder="What are you working on?"/>
+            <input type="submit" value="play music"/>
+        </form>
+        <div id="test">testing</div>
+        <audio controls>
+            <source src="./songs/Happy.mp3" type="audio/mpeg">
+            Your browser does not support this audio
+          </audio>
+    </main>
+	<script src="index.js"></script>
+  </body>
+</html>
