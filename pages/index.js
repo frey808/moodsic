@@ -1,11 +1,11 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./index.module.css";
 
 export default function Home() {
   const [songInput, setSongInput] = useState("");
-  const [result, setResult] = useState();
-  var songFilePath = "";
+  const [result, setResult] = useState("");
+  const [songKey, setSongKey] = useState(0);
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -25,7 +25,8 @@ export default function Home() {
 
       setResult((data.result + ".mp3").trim());
       setSongInput("");
-    } catch(error) {
+      setSongKey(songKey + 1);
+    } catch (error) {
       console.error(error);
       alert(error.message);
     }
@@ -51,8 +52,7 @@ export default function Home() {
           <input type="submit" value="Generate Songs" />
         </form>
         <div className={styles.result}>{result}</div>
-        {console.log("/songs/" + result)}
-        <audio controls>
+        <audio controls key={songKey}>
           <source src={"/songs/" + result} type="audio/mpeg"></source>
           Your browser does not support this audio
         </audio>
