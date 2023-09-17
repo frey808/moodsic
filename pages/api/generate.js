@@ -51,7 +51,7 @@ export default async function (req, res) {
 function generatePrompt(song) {
   const superSong =
     song[0].toUpperCase() + song.slice(1).toLowerCase();
-  return `what are 10 song reminds you of the mood ${song}
+  return `what are 10 song reminds you of the mood ${song} in json form
   ${song}
   `;
 }
