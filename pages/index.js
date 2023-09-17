@@ -26,6 +26,7 @@ export default function Home() {
       setResult((data.result + ".mp3").trim());
       setSongInput("");
       setSongKey(songKey + 1);
+      console.log(result);
     } catch (error) {
       console.error(error);
       alert(error.message);
