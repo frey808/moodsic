@@ -1,11 +1,19 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react"; // Import useRef
 import styles from "./index.module.css";
 
 export default function Home() {
   const [songInput, setSongInput] = useState("");
   const [result, setResult] = useState("");
   const [songKey, setSongKey] = useState(0);
+  const audioRef = useRef(null); // Create a ref for the audio element
+
+  useEffect(() => {
+    // Play audio when the songKey changes
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  }, [songKey]);
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -53,7 +61,7 @@ export default function Home() {
           <input type="submit" value="Generate Songs" />
         </form>
         <div className={styles.result}>{result}</div>
-        <audio controls key={songKey}>
+        <audio controls key={songKey} ref={audioRef}> {/* Attach the ref to the audio element */}
           <source src={"/songs/" + result} type="audio/mpeg"></source>
           Your browser does not support this audio
         </audio>
