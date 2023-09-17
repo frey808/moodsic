@@ -29,6 +29,7 @@ export default async function (req, res) {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: generatePrompt(song),
+      prompt: doSomething(generatePrompt(song)),
       temperature: 0.6,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
@@ -55,3 +56,25 @@ function generatePrompt(song) {
   ${song}
   `;
 }
+
+function doSomething(data) {
+  // Check if data is an array (assuming your data is an array of todos)
+  if (Array.isArray(data)) {
+    // Iterate through the array and print each todo
+    data.forEach(todo => {
+      console.log('Todo ID:', todo.id);
+      console.log('Todo Title:', todo.title);
+      console.log('Todo Completed:', todo.completed);
+      console.log('---'); // Separating line for readability
+    });
+  } else {
+    console.error('Invalid data format. Expected an array.');
+  }
+}
+
+fetch('http://localhost:3000/api/todos')
+  .then(response => response.json())
+  .then(data => doSomething(data))
+  .catch(error => {
+    console.error('Error:', error);
+  });
