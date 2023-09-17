@@ -50,6 +50,7 @@ export default function Home() {
           <input type="submit" value="Generate Songs" />
         </form>
         <div className={styles.result}>{result}</div>
+        {console.log(result)}
       </main>
     </div>
   );
